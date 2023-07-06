@@ -1,0 +1,3 @@
+flask
+numpy
+paho.mqtt.client

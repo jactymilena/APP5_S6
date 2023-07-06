@@ -1,6 +1,6 @@
 # APP5_S6
 
-To run the app, execute the following command in the folder `/app`:
+To run the app, execute the following command in the folder `/employees_stalker`:
 ```
-docker-compose up
+python main.py
 ```
