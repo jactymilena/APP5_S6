@@ -1,10 +1,12 @@
 import paho.mqtt.client as mqtt
+import json
 import consts
 
 
 def on_connect(client, userdata, flags, rc):
-    client.publish(consts.topic, "STARTING SERVER")
-    client.publish(consts.topic, "CONNECTED")
+    # client.publish(consts.topic, "STARTING SERVER")
+    # client.publish(consts.topic, "CONNECTED")
+    print('allo')
 
 
 class Relai:
@@ -16,7 +18,12 @@ class Relai:
         self.client.loop_start()
 
     def publish_user(self, uuid, time):
-        self.client.publish(consts.topic, f"{uuid}:{time}")
+        json_msg = json.dumps({
+            "uuid": str(uuid),
+            "enter_time" : str(time) # or out_time
+        })
+        
+        self.client.publish(consts.topic, json_msg.encode('utf-8'))
 
 
     

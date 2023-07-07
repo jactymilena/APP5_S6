@@ -1,9 +1,11 @@
 from flask import Flask, render_template, Blueprint
+from datetime import datetime
+
 from relai import Relai
-from db.database import Database
+# from db.database import Database
 
 relai = Relai()
-db = Database('db/users.cvs')
+# db = Database('db/users.cvs')
 views = Blueprint("views", __name__)
 
 @views.route('/')
@@ -18,7 +20,7 @@ def get_control():
 
 @views.route('/relai')
 def test():
-    relai.publish_user('test', 'test')
+    relai.publish_user('cc94b74a-f2ec-4c66-88fc-558813b475b0', datetime.now())
     return 'This is a relai test'
 
 
