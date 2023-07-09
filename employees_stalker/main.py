@@ -10,10 +10,10 @@ def create_app():
     from views import views
 
     app.register_blueprint(views, url_prefix="/")
-
+    
     return app
 
 
 if __name__ == "__main__":
     app= create_app()
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True)
