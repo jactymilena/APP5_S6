@@ -59,18 +59,21 @@
       <th>Date d'entrée</th>
       <th>Date de sortie</th>
     </tr>
+
+    {% for index, row in data.iterrows() %}
     <tr>
-      <td>1</td>
-      <td>John Doe</td>
-      <td>2023-07-01</td>
-      <td>2023-07-02</td>
+      <td>{{ row['uuid'] }}</td>
+      <td>{{ row['name'] }}</td>
+      <td>{{ row['arrival_time'] }}</td>
+      <td>{{ row['exit_time'] }}</td>
     </tr>
-    <tr>
+    {% endfor %}
+    <!-- <tr>
       <td>2</td>
       <td>Jane Smith</td>
       <td>2023-07-03</td>
       <td>2023-07-05</td>
-    </tr>
+    </tr> -->
     <!-- Ajoutez d'autres lignes avec les informations des personnes détectées -->
   </table>
 

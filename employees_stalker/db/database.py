@@ -17,6 +17,10 @@ class Database:
         self.data.to_csv(self.filename, index=False)
 
 
+    def get_all(self):
+        return self.data; 
+
+
     def get_by_column(self, column):
         rows = []
         for i in range(len(self.data)):

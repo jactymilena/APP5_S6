@@ -5,26 +5,26 @@ import json
 
 # from models.relai import Relai
 from models.employees_manager import EmployeesManager
+from models.archive import Archive
+import consts
 # from db.database import Database
 
-# relai = Relai()
+archive = Archive()
 manager = EmployeesManager()
-# db = Database('db/users.cvs')
 views = Blueprint("views", __name__)
 
 @views.route('/')
-def hello():
+def home():
     return render_template('index.html')
 
 
 @views.route('/archive')
-def archive():
-    return render_template('archive.html', dogs=['dasha', 'luna'])
+def get_archive():
+    return render_template('archive.html', data=archive.get_employees())
 
 
 @views.route('/control')
 def control():
-    # TODO: get nnumber of active employees from employees manager
     return render_template('control.html', nb_pers=manager.employees_count())
 
 
@@ -37,18 +37,3 @@ def post_ids():
         # relai.notify(manager.get_employees())
         return jsonify(isError= False, message= "Success", statusCode= 200, data= data), 200
         
-
-     
-# @views.route('/relai',  methods = ['POST'])
-# def update_relai():
-    # if request.method == 'POST':
-        # data = request.data
-        # print(data)
-        # relai.publish_user('cc94b74a-f2ec-4c66-88fc-558813b475b0', datetime.now())
-
-    # return 'This is a relai test'
-
-
-@views.route('/archive')
-def get_archive():
-    return 'This is an archive test'
