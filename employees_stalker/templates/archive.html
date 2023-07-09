@@ -47,6 +47,16 @@
     .button:hover {
       background-color: #45a049;
     }
+
+    .active {
+      color: green;
+      font-weight: bold;
+    }
+
+    .inactive {
+      color: red;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -58,6 +68,7 @@
       <th>Nom</th>
       <th>Date d'entrée</th>
       <th>Date de sortie</th>
+      <th>État</th>
     </tr>
 
     {% for index, row in data.iterrows() %}
@@ -66,17 +77,16 @@
       <td>{{ row['name'] }}</td>
       <td>{{ row['arrival_time'] }}</td>
       <td>{{ row['exit_time'] }}</td>
+      {% if row['exit_time'] == '-' %}
+        <td class="active">Actif</td>
+      {% else %}
+        <td class="inactive">Inactif</td>
+      {% endif %}
     </tr>
     {% endfor %}
-    <!-- <tr>
-      <td>2</td>
-      <td>Jane Smith</td>
-      <td>2023-07-03</td>
-      <td>2023-07-05</td>
-    </tr> -->
-    <!-- Ajoutez d'autres lignes avec les informations des personnes détectées -->
   </table>
 
   <a href="/" class="button">Retour à l'accueil</a>
+
 </body>
 </html>
