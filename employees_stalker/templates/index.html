@@ -1,9 +1,40 @@
-<h1>Problématique APP5 S6</h1>
-<h3>Liste des UID reçu:</h3>
-<div style="color:red">Hellooo   ittts mmmeee :3 </div>
-<ul>
-    {% for d in dogs  %}
-    <li> {{ d }} </li>
-    {% endfor %}
-</ul> 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Accueil</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: #f1f1f1;
+    }
+    
+    h1 {
+      color: #333;
+    }
 
+    .button {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      margin-top: 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Accueil</h1>
+  
+  <a href="control" class="button">Interface de Contrôle</a>
+  <a href="archive" class="button">Archive</a>
+</body>
+</html>
