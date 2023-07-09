@@ -1,7 +1,8 @@
 from flask import Flask, render_template, Blueprint
 from datetime import datetime
+from flask import request
 
-from relai import Relai
+from models.relai import Relai
 # from db.database import Database
 
 relai = Relai()
@@ -10,17 +11,35 @@ views = Blueprint("views", __name__)
 
 @views.route('/')
 def hello():
-    return render_template('index.html', dogs=['dasha', 'luna'])
+    return render_template('index.html')
+
+
+@views.route('/archive')
+def archive():
+    return render_template('archive.html', dogs=['dasha', 'luna'])
 
 
 @views.route('/control')
-def get_control():
-    return 'This is a control test'
+def control():
+    # TODO: 
+    return render_template('control.html', nb_pers=2)
 
 
-@views.route('/relai')
+@views.route('/ids', methods = ['POST'])
+def post_ids():
+    if request.method == 'POST':
+        data = request.data
+        print(data)
+        
+
+        
+@views.route('/relai',  methods = ['POST'])
 def test():
-    relai.publish_user('cc94b74a-f2ec-4c66-88fc-558813b475b0', datetime.now())
+    if request.method == 'POST':
+        data = request.data
+        print(data)
+        # relai.publish_user('cc94b74a-f2ec-4c66-88fc-558813b475b0', datetime.now())
+
     return 'This is a relai test'
 
 
