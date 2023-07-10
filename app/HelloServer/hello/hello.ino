@@ -1,9 +1,9 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 
-const char* ssid = "Fab5";
-const char* password = "****";
-const char* serverURL = "http://127.0.0.1:5000/control";
+const char* ssid = "Saenzros2_4";
+const char* password = "********"; // NE PAS PUSH 
+const char* serverURL = "http://10.0.0.223:5000/ids";
 
 void setup() {
   Serial.begin(115200);
@@ -29,13 +29,11 @@ void loop(){
     HTTPClient http;
 
     // Spécifiez l'URL du serveur et l'endpoint
-    http.begin(serverURL + "/endpoint");
+    http.begin(serverURL);
 
-    // Définissez les en-têtes de la requête si nécessaire
-    http.addHeader("Content-Type", "application/json");
 
     // Construisez les données à envoyer au serveur
-    String data = "{\"temperature\": 25.5, \"humidity\": 60}";
+    String data = "{\"ids\": [\"7f3bfd87-a46d-4a51-bdeb-7a479432a8f8\", \"5b964c48-2edc-43b3-b6bf-c50a563460a2\" ]}";
 
     // Envoyez une requête POST avec les données
     int httpResponseCode = http.POST(data);
