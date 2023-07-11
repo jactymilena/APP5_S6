@@ -13,7 +13,7 @@ const char* password = "****"; // NE PAS PUSH
 const char* serverURL = "http://10.0.0.223:5000/ids";
 
 std::vector<std::string> activeIds(10);
-int scanTime = 5; // seconds
+int scanTime = 1; // seconds
 BLEScan *pBLEScan;
 
 
@@ -79,10 +79,7 @@ void scanBLEBeacon() {
           oBeacon.setData(strManufacturerData);
           activeIds.push_back(oBeacon.getProximityUUID().toString());
 
-          Serial.printf("iBeacon Frame\n");
-          Serial.printf("-------------------------\n");
           Serial.printf("UUID: %s\n", oBeacon.getProximityUUID().toString().c_str());
-          Serial.printf("-------------------------\n");
         }
       }
   }
@@ -102,9 +99,11 @@ void loop() {
       data += "\"" + String(activeIds[i].c_str());
       if(i != activeIds.size() - 1) {
         data += "\",";
+      } else {
+        data += "\"";
       }
     }
-    data += "\"]}";
+    data += "\]}";
 
     int httpResponseCode = http.POST(data);
 
@@ -119,5 +118,5 @@ void loop() {
     http.end();
   }
 
-  delay(5000); // Attendez 5 secondes avant d'envoyer la prochaine requête
+  delay(1000); // Attendez 5 secondes avant d'envoyer la prochaine requête
 }

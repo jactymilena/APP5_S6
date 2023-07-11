@@ -31,5 +31,5 @@ def post_ids():
     if request.method == 'POST':
         data = json.loads(request.data)
         manager.update(data['ids'])
-        return jsonify(isError= False, message= "Success", statusCode= 200, data= data), 200
+        return jsonify(isError= False, message= "Success", statusCode= 200, data=data), 200
         

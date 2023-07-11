@@ -16,6 +16,10 @@ with open('./db/control.csv', 'w', newline='') as file:
     field = ["uuid"]
     
     writer.writerow(field)
+    writer.writerow(["7f3bfd87-a46d-4a51-bdeb-7a479432a8f8"])
+    writer.writerow(["5b964c48-2edc-43b3-b6bf-c50a563460a2"])
+    writer.writerow(["cc94b74a-f2ec-4c66-88fc-558813b475b0"])
     writer.writerow([uuid.uuid4()])
     writer.writerow([uuid.uuid4()])
     writer.writerow([uuid.uuid4()])
+
